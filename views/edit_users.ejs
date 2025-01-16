@@ -1,0 +1,79 @@
+<%- include('layout/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-success text-white text-center">
+                            <h4>Edit Profile (<%= user.name %>)</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="/update/<%= user._id %>" method="POST" id="add-form" enctype="multipart/form-data">
+                                <!-- Name Field -->
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="name"
+                                        name="name"
+                                        value="<%= user.name %>"
+                                        placeholder="Enter your name"
+                                        required
+                                    >
+                                </div>
+                                <!-- Email Field -->
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        id="email"
+                                        name="email"
+                                        value="<%= user.email %>"
+                                        placeholder="Enter your email"
+                                        required
+                                    >
+                                </div>
+                                <!-- Phone Field -->
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input
+                                        type="tel"
+                                        class="form-control"
+                                        id="phone"
+                                        name="phone"
+                                        value="<%= user.phone %>"
+                                        placeholder="Enter your phone number"
+                                        required
+                                    >
+                                </div>
+                                <!-- Image Upload Field -->
+                                <div class="form-group">
+                                    <label for="image">Upload Image</label>
+                                    <input
+                                        type="file"
+                                        class="form-control-file"
+                                        id="image"
+                                        name="image"
+                                        accept="image/*"
+                                    >
+                                    <img src="/uploads/<%= user.image %>" width="100" class="img-thumbnail mt-2">
+                                </div>
+                                <input type="hidden" name="old_image" value="<%= user.image %>">
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-success btn-block mt-3">
+                                    Update User
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('layout/footer') %>
